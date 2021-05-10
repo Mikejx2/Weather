@@ -1,4 +1,4 @@
-
+<script></script>
         let input  = prompt("Enter City ");
         document.querySelector('.userInput').innerHTML = input
         var temp = fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${APIKEY}`)
@@ -15,7 +15,7 @@
             let cel = Math.floor(kel - 273.15);
             let fah = Math.floor(cel * 1.8 + 32);
             console.log(fah);
-            document.querySelector('.dayTemp1').innerHTML = fah 
+            document.querySelector('#dT1').innerHTML = fah 
             // document.querySelector('.weather1').innerHTML = fah 
             // document.querySelector('.dayTemp1').innerHTML = fah 
             // document.querySelector('.nightTemp1').innerHTML = fah 
