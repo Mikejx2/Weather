@@ -147,32 +147,9 @@ font-size: 25px;
 
 
 
-    <script>
-        let input  = prompt("Enter City ");
-        document.querySelector('.userInput').innerHTML = input
-        var temp = fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=9361bd03ec7175e9eea92fdf7a717518`)
-        // var temp = fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${input}&cnt=5&appid=d665c62c18e9b6b7723a986c6f3c83e1`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data)
-            console.log(data.main)
-
-            let tem = data.main.temp;
-            // let weat = data.weather.main;
-            // let max = data.main.temp_max;
-            // let min = data.main.temp_min;
-            let cel = Math.floor(kel - 273.15);
-            let fah = Math.floor(cel * 1.8 + 32);
-            console.log(fah);
-            document.querySelector('.dayTemp1').innerHTML = fah 
-            // document.querySelector('.weather1').innerHTML = fah 
-            // document.querySelector('.dayTemp1').innerHTML = fah 
-            // document.querySelector('.nightTemp1').innerHTML = fah 
-
-        })
-        
-        
-    </script>
+    
+    <script src="api.js"></script>
+    <script src="main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
 </body>
 </html>
