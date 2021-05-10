@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+    <style>
+
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    background-color: gray;
+    background-image: url(https://i.pinimg.com/originals/59/db/74/59db74b2530e2b0458d5e3711d231897.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0px;
+    padding: 0px;
+}
+
+.days{
+    width: 100vw;
+    height: 100vh;
+    
+}
+
+.box{
+    
+    margin: 0px 20px;
+    display: flex;
+    justify-content: space-around;
+    height: 80vh;
+}
+
+.dayCell{
+    padding: 10px;
+    border: 5px solid rgb(255, 255, 255);
+    border-radius: 25px;
+    background-image: url(https://www.teahub.io/photos/full/137-1374510_open-field-wallpaper-meadow-background.jpg);
+    background-repeat: no-repeat;
+    background-position:top;
+    width: 200px;
+}
+        
+.flexContainerRow{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: stretch;
+}
+
+.flexContainerColumn{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: stretch;
+}
+
+.userInput{
+height: 70px;
+display: flex;
+margin-top: 20px;
+font-size: 50px;
+align-items: center;
+color: black;
+font-family: Verdana;
+margin-left: 60px;
+}
+
+.day{
+    background-color: rgb(48, 77, 156);
+    color: white;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 5px 5px 0px 0px ;
+    height: 8%;
+    font-size: 40px;
+}
+
+.dayTemp{
+display: flex;
+justify-content: center;
+font-size: 35px;
+border-bottom: 3px solid black;
+}
+
+.nightTemp{
+display: flex;
+justify-content: center;
+font-size: 25px;
+}
+
+.weather{
+    background-color: grey;
+    height: 58vh;
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+    </style>
+</head>
+<body class="container">
+    <div class="container">
+        <div class="days row">
+            <div class="userInput ">Atlanta</div>
+            <div class="box row" >
+                <div class="dayCell " >
+                    <div class="day">Sun</div>
+                    <div class="weather">whats is the weather</div>
+                    <div class="dayTemp" id="dT1">80</div>
+                    <div class="nightTemp" id="nT1">91</div>
+                </div>
+                <div class="dayCell ">
+                    <div class="day">Mon</div>
+                    <div class="weather" style="background: url(https://media.istockphoto.com/videos/overcast-video-id450463351?s=640x640);"></div>
+                    <div class="dayTemp" id="dT2">80</div>
+                    <div class="nightTemp" id="nT2">91</div>
+                </div>
+                <div class="dayCell ">
+                    <div class="day"> Tue</div>
+                    <div class="weather" style="background: url(https://images.photowall.com/products/44478/sunny-sky.jpg?h=699&q=85);"></div>
+                    <div class="dayTemp" id="dT3">80</div>
+                    <div class="nightTemp" id="nT3">91</div>
+                </div>
+                <div class="dayCell ">
+                    <div class="day">Wed</div>
+                    <div class="weather" style="background: url(https://png.pngtree.com/thumb_back/fw800/background/20201012/pngtree-rainy-sky-background-image_410908.jpg);"></div>
+                    <div class="dayTemp" id="dT4">80</div>
+                    <div class="nightTemp" id="nT4">91</div>
+                </div>
+                <div class="dayCell ">
+                    <div class="day">Thu</div>
+                    <div class="weather" style="background: url(https://cdn.pixabay.com/photo/2020/10/08/04/53/lightning-5636948_960_720.jpg);"></div>
+                    <div class="dayTemp" id="dT4">80</div>
+                    <div class="nightTemp" id="nT4">91</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <script>
+        let input  = prompt("Enter City ");
+        document.querySelector('.userInput').innerHTML = input
+        var temp = fetch(`http://api.openweathermap.org/data/2.5/weather?q=${input}&appid=9361bd03ec7175e9eea92fdf7a717518`)
+        // var temp = fetch(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${input}&cnt=5&appid=d665c62c18e9b6b7723a986c6f3c83e1`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data)
+            console.log(data.main)
+
+            let tem = data.main.temp;
+            // let weat = data.weather.main;
+            // let max = data.main.temp_max;
+            // let min = data.main.temp_min;
+            let cel = Math.floor(kel - 273.15);
+            let fah = Math.floor(cel * 1.8 + 32);
+            console.log(fah);
+            document.querySelector('.dayTemp1').innerHTML = fah 
+            // document.querySelector('.weather1').innerHTML = fah 
+            // document.querySelector('.dayTemp1').innerHTML = fah 
+            // document.querySelector('.nightTemp1').innerHTML = fah 
+
+        })
+        
+        
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8" crossorigin="anonymous"></script>
+</body>
+</html>
